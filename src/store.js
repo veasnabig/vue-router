@@ -16,7 +16,10 @@ export const store = new Vuex.Store({
   },
   mutations: {
     routeHistory(state, route) {
-      state.routeLink.push(route);
+      const existRoute  = state.routeLink.filter(o => o.name === route.name)
+      if(existRoute.length === 0){
+        state.routeLink.push(route);
+      }
     }
   }
 })
